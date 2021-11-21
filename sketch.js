@@ -18,8 +18,8 @@ function preload(){
 function setup() {
   createCanvas(800, 800);
 
-  scoreboard.createElement("h1")
-  heading.createElement("h1")
+  //scoreboard.createElement("h1")
+  //heading.createElement("h1")
 
   
   backBoard= createSprite(50, width/2, 100,height);
@@ -39,19 +39,27 @@ function setup() {
 
 function draw() {
   background("#BDA297");
-  scoreboard.html("Score: "+score)
-  scoreboard.style('color:red'); 
-  scoreboard.position(width-200,20)
+  //scoreboard.html("Score: "+score)
+  //scoreboard.style('color:red'); 
+ // scoreboard.position(width-200,20)
 
 
-  heading.html("Life: "+life)
-  heading.style('color:red'); 
-  heading.position(150,20)
+  //heading.html("Life: "+life)
+  //heading.style('color:red'); 
+ // heading.position(150,20)
 
   if(gameState === 1){
     gun.y=mouseY  
 
     drawSprites();
+  }
+
+  if(blueBubbleGroup.collide(bulletGroup)) {
+    handleBubbleCollision(blueBubbleGroup);
+  }
+
+  if(blueBubbleGroup.collide(backBoard)) {
+    handleGameover(blueBubbleGroup);
   }
 }
   function blueBubble() {
